@@ -1,0 +1,51 @@
+<form id="formInscricao">
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="nome" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">E-mail</label>
+      <input type="email" class="form-control" id="email" required>
+    </div>
+    <div class="mb-3">
+      <label for="telefone" class="form-label">Telefone</label>
+      <input type="tel" class="form-control" id="telefone" required>
+    </div>
+    <div class="mb-3">
+      <label for="empresa" class="form-label">Empresa</label>
+      <input type="text" class="form-control" id="empresa" required>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Enviar Inscrição</button>
+  </form>
+  
+  <script>
+    const form = document.getElementById("formInscricao");
+  
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+  
+      const senha = Math.random().toString(36).substring(2, 10).toUpperCase();
+  
+      const data = {
+        nome: document.getElementById("nome").value,
+        email: document.getElementById("email").value,
+        telefone: document.getElementById("telefone").value,
+        empresa: document.getElementById("empresa").value,
+        senha: senha
+      };
+  
+      // Envia os dados para o Google Apps Script
+      await fetch("https://script.google.com/macros/s/AKfycbyonI6AzZ3meTJz4W2cHTsvwaFkyi8EZcIpv6xikKUyAU5xkwrn8DjwpaSSOdixSSID/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: new URLSearchParams(data)
+      });
+  
+      // Redireciona para página de confirmação
+      window.location.href = "confirmacao.html?senha=" + senha;
+    });
+  </script>
+  
