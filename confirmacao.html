@@ -1,36 +1,88 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Confirmação de Inscrição</title>
-  <!-- Bootstrap CSS -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Confirmação - Pertalks</title>
   <link 
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
-    rel="stylesheet">
+    rel="stylesheet" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+    .header {
+      background: linear-gradient(135deg, #63adb7, #b96ea5);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .senha {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #63adb7;
+      margin: 20px 0;
+    }
+    .btn-home {
+      background-color: #b96ea5;
+      color: white;
+      font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+    }
+    .btn-home:hover {
+      background-color: #63adb7;
+    }
+    footer {
+      background-color: #9c9b9f;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+    }
+  </style>
 </head>
 <body>
-  <div class="container my-5">
-    <div class="card shadow text-center">
-      <div class="card-body">
-        <h1 class="mb-4">Inscrição Confirmada 🎉</h1>
-        <p>Obrigado por se inscrever na palestra!</p>
-        <p>Em breve você receberá um e-mail com a confirmação e sua senha de acesso.</p>
-        <h2 class="text-primary" id="senhaGerada"></h2>
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const senha = params.get("senha");
-  document.getElementById("senhaGerada").innerText = senha;
-</script>
-
-        <a href="index.html" class="btn btn-success mt-3">Voltar para a Página Inicial</a>
-      </div>
-    </div>
+  <!-- Header -->
+  <div class="header">
+    <h1>Inscrição Confirmada!</h1>
+    <p>Obrigado por se inscrever na palestra</p>
   </div>
 
-  <!-- Bootstrap JS -->
-  <script 
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+  <!-- Conteúdo principal -->
+  <div class="content">
+    <p>Sua inscrição foi realizada com sucesso.</p>
+    <p>Guarde a senha abaixo para acessar o evento:</p>
+    <div class="senha" id="senhaGerada">XXXXXX</div>
+    <a href="index.html" class="btn btn-home">Voltar para Home</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Pertalks | Criado pela Pro Junior</p>
+  </footer>
+
+  <script>
+    // Captura a senha da URL e mostra na página
+    const params = new URLSearchParams(window.location.search);
+    const senha = params.get("senha");
+    if(senha) {
+      document.getElementById("senhaGerada").textContent = senha;
+    }
   </script>
 </body>
 </html>
