@@ -1,31 +1,52 @@
-<form id="formInscricao">
-    <div class="mb-3">
-      <label for="nome" class="form-label">Nome</label>
-      <input type="text" class="form-control" id="nome" required>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inscrição</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-light">
+
+  <div class="container d-flex align-items-center justify-content-center min-vh-100">
+    <div class="card shadow-lg p-4" style="max-width: 500px; width: 100%;">
+      <h4 class="card-title text-center mb-4">Formulário de Inscrição</h4>
+
+      <form id="formInscricao">
+        <div class="mb-3">
+          <label for="nome" class="form-label">Nome <i class="fas fa-user ms-1"></i></label>
+          <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">E-mail <i class="fas fa-envelope ms-1"></i></label>
+          <input type="email" class="form-control" id="email" placeholder="seu@email.com" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="telefone" class="form-label">Telefone <i class="fas fa-phone ms-1"></i></label>
+          <input type="tel" class="form-control" id="telefone" placeholder="(00) 00000-0000" required>
+        </div>
+
+        <div class="mb-4">
+          <label for="empresa" class="form-label">Empresa <i class="fas fa-building ms-1"></i></label>
+          <input type="text" class="form-control" id="empresa" placeholder="Nome da empresa" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Enviar Inscrição</button>
+      </form>
     </div>
-    <div class="mb-3">
-      <label for="email" class="form-label">E-mail</label>
-      <input type="email" class="form-control" id="email" required>
-    </div>
-    <div class="mb-3">
-      <label for="telefone" class="form-label">Telefone</label>
-      <input type="tel" class="form-control" id="telefone" required>
-    </div>
-    <div class="mb-3">
-      <label for="empresa" class="form-label">Empresa</label>
-      <input type="text" class="form-control" id="empresa" required>
-    </div>
-    <button type="submit" class="btn btn-primary w-100">Enviar Inscrição</button>
-  </form>
-  
+  </div>
+
   <script>
     const form = document.getElementById("formInscricao");
-  
+
     form.addEventListener("submit", async function (e) {
       e.preventDefault();
-  
+
       const senha = Math.random().toString(36).substring(2, 10).toUpperCase();
-  
+
       const data = {
         nome: document.getElementById("nome").value,
         email: document.getElementById("email").value,
@@ -33,8 +54,7 @@
         empresa: document.getElementById("empresa").value,
         senha: senha
       };
-  
-      // Envia os dados para o Google Apps Script
+
       await fetch("https://script.google.com/macros/s/AKfycbyonI6AzZ3meTJz4W2cHTsvwaFkyi8EZcIpv6xikKUyAU5xkwrn8DjwpaSSOdixSSID/exec", {
         method: "POST",
         mode: "no-cors",
@@ -43,9 +63,10 @@
         },
         body: new URLSearchParams(data)
       });
-  
-      // Redireciona para página de confirmação
+
       window.location.href = "confirmacao.html?senha=" + senha;
     });
   </script>
-  
+
+</body>
+</html>
