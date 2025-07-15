@@ -28,9 +28,57 @@
     .header p {
       font-size: 1.2rem;
     }
+    .card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: white;
+      position: relative;
+    }
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+    .card img {
+      height: 150px;
+      object-fit: cover;
+      border-bottom: 1px solid #eee;
+    }
+    .card-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .card-text {
+      font-size: 0.95rem;
+      text-align: left;
+    }
+    .btn-saiba-mais {
+      background-color: #63adb7;
+      color: white;
+      border: none;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+    .btn-saiba-mais:hover {
+      background-color: #b96ea5;
+    }
+    .card .badge-data {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(0,0,0,0.6);
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+    }
     .cards-section {
       background-color: #d8dade; /* cinza claro */
-      padding: 50px 20px;
+      padding: 40px 20px;
     }
     .card {
       border: none;
@@ -106,6 +154,39 @@
             </div>
           </div>
         </div>
+        <!-- Card 4 -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="https://via.placeholder.com/400x200/5a9f78,b4d2ba?text=Inovação+e+Sustentabilidade" alt="Palestra 4">
+              <div class="card-body">
+                <h5 class="card-title">Inovação e Sustentabilidade</h5>
+                <p class="card-text">Descubra como alinhar inovação tecnológica com práticas sustentáveis.</p>
+                <a href="palestra4.html" class="btn btn-saiba-mais w-100">Saiba Mais</a>
+              </div>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="https://via.placeholder.com/400x200/8e73b3,cbb7dd?text=Liderança+e+Inteligência+Emocional" alt="Palestra 5">
+              <div class="card-body">
+                <h5 class="card-title">Liderança e Inteligência Emocional</h5>
+                <p class="card-text">Desenvolva habilidades de liderança através da inteligência emocional.</p>
+                <a href="palestra5.html" class="btn btn-saiba-mais w-100">Saiba Mais</a>
+              </div>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="https://via.placeholder.com/400x200/6373ad,c5d0eb?text=UX+Design+para+Ágeis" alt="Palestra 6">
+              <div class="card-body">
+                <h5 class="card-title">UX Design para Projetos Ágeis</h5>
+                <p class="card-text">Integre design de experiência ao fluxo ágil para entregar mais valor.</p>
+                <a href="palestra6.html" class="btn btn-saiba-mais w-100">Saiba Mais</a>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>
