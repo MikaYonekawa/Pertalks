@@ -15,14 +15,32 @@
       display: flex;
       flex-direction: column;
       background-color: #f8f9fa;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: black;
+      font-weight: bold
     }
+
     .header {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin-bottom: 10px;
       background: linear-gradient(135deg, #63adb7, #b96ea5);
       color: white;
-      text-align: center;
       padding: 40px 20px;
+      text-align: center;
     }
+
+    .header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+    }
+
+    .header p {
+      font-size: 1.2rem;
+      margin-bottom: 0;
+      opacity: 0.95;
+      font-weight: normal;
+    }
+    
     .form-container {
       flex: 1;
       display: flex;
@@ -30,44 +48,62 @@
       align-items: center;
       padding: 40px 20px;
     }
+
     .form-box {
-      background: #ffffff;
-      border-radius: 15px;
+      background-color: white;
+      border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin-bottom: 20px;
       padding: 30px;
       width: 100%;
       max-width: 500px;
+      border: 1px solid #dcdcdc; 
     }
+
     .btn-enviar {
-      background-color: #63adb7;
-      color: white;
-      font-weight: bold;
+      background: linear-gradient(135deg,#63adb7, #b96ea5);
+      color: rgb(255, 255, 255);
+      padding: 12px 24px;
       border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      transition: 0.3s ease;
     }
+
     .btn-enviar:hover {
       background-color: #b96ea5;
     }
+    
     .btn-voltar {
-      background-color: #b96ea5;
-      color: white;
-      font-weight: bold;
+      background-color: #eaeaea;
+      color: #333;
+      padding: 12px 24px;
       border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      transition: 0.3s ease;
     }
     .btn-voltar:hover {
-      background-color: #63adb7;
+      background-color: #ccc;
     }
     footer {
-      background-color: #9c9b9f;
-      color: white;
+      background-color: #f1f1f1;
       text-align: center;
-      padding: 15px 0;
+      padding: 20px 20px;
+      font-size: 14px;
+      color: #777;
     }
   </style>
 </head>
 <body>
   <!-- Header -->
   <div class="header">
-    <h1>Inscrição - Pertalks</h1>
+    <h1>Inscrição</h1>
     <p>Preencha os dados abaixo para garantir sua vaga</p>
   </div>
 
