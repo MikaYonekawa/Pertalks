@@ -269,8 +269,13 @@
         </div>
         
         <div class="password-section">
-          <div class="password-label">Sua senha de acesso:</div>
-          <div id="senhaGerada" class="password-display">mkt</div>
+          <p><strong>Palestra:</strong> <span id="palestraNome"></span></p>
+             <div class="password-label">
+               <div id="senhaGerada" class="password-display">
+          <p><strong>Sua senha de acesso:</strong> <span id="senhaAcesso"></span></p>
+</div>
+       </div>
+         
           <div class="password-note">
             <strong>Importante:</strong> Guarde esta senha com cuidado! Ela será necessária para acessar o evento.
           </div>
@@ -287,11 +292,17 @@
 
   <script>
     // Captura a senha da URL e exibe
-    const params = new URLSearchParams(window.location.search);
-    const senha = params.get("senha");
-    if (senha) {
-      document.getElementById("senhaGerada").textContent = senha;
-    }
+   const params = new URLSearchParams(window.location.search);
+const palestra = params.get("palestra");
+const senha = params.get("senha");
+
+if (palestra) {
+  document.getElementById("palestraNome").textContent = palestra;
+}
+if (senha) {
+  document.getElementById("senhaAcesso").textContent = senha;
+}
+
   </script>
 </body>
 </html>

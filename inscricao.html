@@ -131,6 +131,8 @@
           <a href="palestra1.html" class="btn btn-voltar">Voltar</a>
           <button type="submit" class="btn btn-enviar">Enviar Inscrição</button>
         </div>
+        <input type="hidden" id="palestra" name="palestra" />
+
       </form>
     </div>
   </div>
@@ -160,36 +162,51 @@
 
   <!-- JavaScript -->
   <script>
+
     const form = document.getElementById("formInscricao");
-  
+  // Captura o parâmetro "palestra" da URL e insere no campo hidden
+const urlParams = new URLSearchParams(window.location.search);
+const palestraParam = urlParams.get("palestra");
+document.getElementById("palestra").value = palestraParam;
+
     form.addEventListener("submit", async function (e) {
-      e.preventDefault();
+      e.preventDefault(); 
+  const senhasPalestras = {
+  "Inovação e Tecnologia": "INOV2025",
+  "Gestão de Projetos": "GEST2025",
+  "Tendências de Mercado": "TEND2025",
+};
+    
+  const palestraSelecionada = document.getElementById("palestra").value;
+const senha = senhasPalestras[palestraSelecionada];
+
+const data = {
+  nome: document.getElementById("nome").value,
+  email: document.getElementById("email").value,
+  telefone: document.getElementById("telefone").value,
+  empresa: document.getElementById("empresa").value,
+  palestra: palestraSelecionada,
+  senha: senha,
+};
+
   
-      const senha = "mkt";
-  
-      const data = {
-        nome: document.getElementById("nome").value,
-        email: document.getElementById("email").value,
-        telefone: document.getElementById("telefone").value,
-        empresa: document.getElementById("empresa").value,
-        senha: senha,
-      };
-  
+
       try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycbwnjAYS8F7hHL6J58JUiBFP8jPKQBPSvmuWqiZ6YOwYW5qR4hUgKRkQrD8zRU7X9GLB/exec", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: new URLSearchParams(data),
-        });
-  
+       const response = await fetch("https://pertalks-api.onrender.com/inscricao", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded",
+  },
+  body: new URLSearchParams(data),
+});
+
         const result = await response.text();
   
         if (result.includes("Erro:")) {
           mostrarErro(result);
         } else {
-          window.location.href = "confirmacao.html?senha=" + senha;
+window.location.href = "confirmacao.html?senha=" + senha + "&palestra=" + encodeURIComponent(palestraSelecionada);
+
         }
       } catch (error) {
         mostrarErro("Ocorreu um erro ao enviar sua inscrição. Tente novamente mais tarde.");
