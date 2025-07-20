@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inscrição - Pertalks</title>
+  <link 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+    rel="stylesheet" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: black;
+      font-weight: bold
+    }
+
+    .header {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #63adb7, #b96ea5);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+    }
+
+    .header p {
+      font-size: 1.2rem;
+      margin-bottom: 0;
+      opacity: 0.95;
+      font-weight: normal;
+    }
+    
+    .form-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .form-box {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin-bottom: 20px;
+      padding: 30px;
+      width: 100%;
+      max-width: 500px;
+      border: 1px solid #dcdcdc; 
+    }
+
+    .btn-enviar {
+      background: linear-gradient(135deg,#63adb7, #b96ea5);
+      color: rgb(255, 255, 255);
+      padding: 12px 24px;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      transition: 0.3s ease;
+    }
+
+    .btn-enviar:hover {
+      background-color: #b96ea5;
+    }
+    
+    .btn-voltar {
+      background-color: #eaeaea;
+      color: #333;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      transition: 0.3s ease;
+    }
+    .btn-voltar:hover {
+      background-color: #ccc;
+    }
+    footer {
+      background-color: #f1f1f1;
+      text-align: center;
+      padding: 20px 20px;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <h1>Inscrição palestra 3</h1>
+    <p>Preencha os dados abaixo para garantir sua vaga</p>
+  </div>
+
+  <!-- Formulário -->
+  <div class="form-container">
+    <div class="form-box">
+      <form id="formInscricao">
+        <div class="mb-3">
+          <label for="nome" class="form-label">Nome</label>
+          <input type="text" class="form-control" id="nome" required />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">E-mail</label>
+          <input type="email" class="form-control" id="email" required />
+        </div>
+        <div class="mb-3">
+          <label for="telefone" class="form-label">Telefone</label>
+          <input type="tel" class="form-control" id="telefone" required />
+        </div>
+        <div class="mb-3">
+          <label for="empresa" class="form-label">Empresa</label>
+          <input type="text" class="form-control" id="empresa" required />
+        </div>
+        <div class="d-flex justify-content-between">
+          <a href="palestra3.html" class="btn btn-voltar">Voltar</a>
+          <button type="submit" class="btn btn-enviar">Enviar Inscrição</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Pertalks | Criado pela Pro Junior</p>
+  </footer>
+  <!-- Modal de Erro -->
+<div class="modal fade" id="erroModal" tabindex="-1" aria-labelledby="erroModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content border-danger">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="erroModalLabel">Erro na Inscrição</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body" id="erroMensagem">
+        <!-- Mensagem de erro será inserida aqui -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- JavaScript -->
+  <script>
+    const form = document.getElementById("formInscricao");
+  
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+  
+      const senha = "mkt";
+  
+      const data = {
+        nome: document.getElementById("nome").value,
+        email: document.getElementById("email").value,
+        telefone: document.getElementById("telefone").value,
+        empresa: document.getElementById("empresa").value,
+        senha: senha,
+      };
+  
+      try {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbwnjAYS8F7hHL6J58JUiBFP8jPKQBPSvmuWqiZ6YOwYW5qR4hUgKRkQrD8zRU7X9GLB/exec", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams(data),
+        });
+  
+        const result = await response.text();
+  
+        if (result.includes("Erro:")) {
+          mostrarErro(result);
+        } else {
+          window.location.href = "confirmacao.html?senha=" + senha;
+        }
+      } catch (error) {
+        mostrarErro("Ocorreu um erro ao enviar sua inscrição. Tente novamente mais tarde.");
+      }
+    });
+  
+    function mostrarErro(mensagem) {
+      document.getElementById("erroMensagem").innerText = mensagem;
+      const modal = new bootstrap.Modal(document.getElementById("erroModal"));
+      modal.show();
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  
+</body>
+</html>
