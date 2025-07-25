@@ -162,48 +162,55 @@
 
   <!-- JavaScript -->
   <script>
-    const form = document.getElementById("formInscricao");
-  
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
-  
-      const senha = "mkt";
-  
-      const data = {
-        nome: document.getElementById("nome").value,
-        email: document.getElementById("email").value,
-        telefone: document.getElementById("telefone").value,
-        empresa: document.getElementById("empresa").value,
-        senha: senha,
-      };
-  
-      try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycbwnjAYS8F7hHL6J58JUiBFP8jPKQBPSvmuWqiZ6YOwYW5qR4hUgKRkQrD8zRU7X9GLB/exec", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: new URLSearchParams(data),
-        });
-  
-        const result = await response.text();
-  
-        if (result.includes("Erro:")) {
-          mostrarErro(result);
-        } else {
-          window.location.href = "confirmacao.html?senha=" + senha;
-        }
-      } catch (error) {
-        mostrarErro("Ocorreu um erro ao enviar sua inscrição. Tente novamente mais tarde.");
+  const form = document.getElementById("formInscricao");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    // Defina a senha e o nome da palestra
+    const senha = "mkt"; // senha para esta palestra
+    const palestra = "Palestra-1"; // nome da palestra
+
+    const data = {
+      nome: document.getElementById("nome").value,
+      email: document.getElementById("email").value,
+      telefone: document.getElementById("telefone").value,
+      empresa: document.getElementById("empresa").value,
+      senha: senha,
+      palestra: palestra
+    };
+
+    try {
+      const response = await fetch("https://pertalks-api.onrender.com/inscricao", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json" // envia como JSON
+        },
+        body: JSON.stringify(data)
+      }); 
+
+      const result = await response.json();
+
+      if (response.ok) {
+        // Se deu certo, redireciona com a senha e palestra
+        window.location.href = `confirmacao.html?senha=${senha}&palestra=${(palestra)}`;
+      } else {
+        // Se a API retornou erro, mostra mensagem
+        mostrarErro(result.message || "Erro desconhecido.");
       }
-    });
-  
-    function mostrarErro(mensagem) {
-      document.getElementById("erroMensagem").innerText = mensagem;
-      const modal = new bootstrap.Modal(document.getElementById("erroModal"));
-      modal.show();
+    } catch (error) {
+      // Se caiu no catch, é erro de conexão ou outro problema
+      mostrarErro("Erro ao conectar com o servidor. Tente novamente mais tarde.");
     }
-  </script>
+  });
+
+  function mostrarErro(mensagem) {
+    document.getElementById("erroMensagem").innerText = mensagem;
+    const modal = new bootstrap.Modal(document.getElementById("erroModal"));
+    modal.show();
+  }
+</script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   
