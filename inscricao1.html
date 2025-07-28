@@ -148,10 +148,18 @@
   import { getFirestore, collection, addDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
   // Cole aqui seus dados do Firebase
-  const firebaseConfig = {
-      //Código de acesso firebase
-    };
 
+      //código de acesso firebase
+      const firebaseConfig = {
+      apiKey: "AIzaSyAF00dTAPcdgXCVPISlq9xDK7bZ7FSNx_0",
+      authDomain: "inscricaopertalks.firebaseapp.com",
+      projectId: "inscricaopertalks",
+      storageBucket: "inscricaopertalks.firebasestorage.app",
+      messagingSenderId: "523613776287",
+      appId: "1:523613776287:web:0cedb8ac4b821e5c6275aa",
+      measurementId: "G-BM100R5MN1"
+    };
+   
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
@@ -165,8 +173,8 @@
     const telefone = document.getElementById("telefone").value;
     const empresa = document.getElementById("empresa").value;
 
-    const palestra = "Palestra-1"; //  altere conforme a palestra
-    const senha = "mkt1";          //  altere conforme a palestra
+    const palestra = "Palestra-3"; //  altere conforme a palestra
+    const senha = "mkt3";          //  altere conforme a palestra
     const LIMITE_INSCRITOS = 30;
 
     try {
@@ -189,7 +197,19 @@
         senha,
         dataInscricao: new Date()
       });
-
+// Envia e-mail via servidor Flask
+await fetch("https://pertalks.onrender.com/enviar-email", {
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify({
+nome,
+email,
+palestra,
+senha
+})
+});
       // Redireciona para página de confirmação
       window.location.href = "confirmacao.html?senha=" + senha;
 
