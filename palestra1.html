@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Inovação e Tecnologia - Pertalks</title>
+  <title>SAE Brasil</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
@@ -155,16 +155,17 @@
     <div class="container">
       <div class="card">
         <div class="card-body">
-          <h2 class="card-title">Inovação e Tecnologia</h2>
+          <h2 class="card-title">SAE BRASIL CLUB - Turma 1</h2>
           <p class="card-text">
-            Nesta palestra, vamos explorar como a inovação tecnológica está transformando empresas, impulsionando novos
-            modelos de negócio e impactando diretamente o futuro das organizações e da sociedade.
+            Jogo de Tabuleiro SAE BRASIL — Conexões em Movimento
+            Uma experiência leve, interativa e divertida, criada para estimular a troca de experiências profissionais e reflexões sobre o ecossistema da mobilidade, fortalecendo vínculos entre os participantes.
+
           </p>
-          <p class="card-text"><strong>Data:</strong> 20/07/2025</p>
-          <p class="card-text"><strong>Horário:</strong> 14:00</p>
-          <p class="card-text"><strong>Local:</strong> Auditório Principal</p>
+          <p class="card-text"><strong>Palestra - 1° dia: </strong> 06/08/2025</p>
+          <p class="card-text"><strong>Horário:</strong> 14:00 a 15:00</p>
+          <p class="card-text"><strong>Duração:</strong> 50 minutos</p>
           <p class="card-text"><strong>Palestrante:</strong> João Silva</p>
-          <p class="card-text"><strong>Vagas disponíveis:</strong> <span id="vagasDisponiveis">...</span></p>
+          <p class="card-text"><strong>Vagas disponíveis:</strong> <span id="vagasDisponiveis">50</span></p>
           <p class="card-text"><strong>Status:</strong> <span id="statusInscricao">Inscrições abertas</span></p>
 
 
@@ -189,15 +190,15 @@
     import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
     const firebaseConfig = {
-
+      
     };
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
     // Lógica para atualizar número de vagas
-    const PALESTRA = "Palestra-3"; // Nome exato usado no campo "palestra" no Firestore
-    const LIMITE_VAGAS = 30;
+    const PALESTRA = "Palestra-1"; // Nome exato usado no campo "palestra" no Firestore
+    const LIMITE_VAGAS = 50;
 
     async function atualizarVagas() {
       const q = query(collection(db, "inscricoes"), where("palestra", "==", PALESTRA));
