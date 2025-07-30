@@ -91,7 +91,7 @@
 </head>
 <body>
   <div class="header">
-    <h1>Palestra-1</h1>
+    <h1>Palestra-6</h1>
     <p>Preencha os dados abaixo para garantir sua vaga</p>
   </div>
 
@@ -148,10 +148,18 @@
   import { getFirestore, collection, addDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
   // Cole aqui seus dados do Firebase
-   const firebaseConfig = {
-      //código de acesso firebase
-    };
 
+      //código de acesso firebase
+      const firebaseConfig = {
+      apiKey: "AIzaSyAF00dTAPcdgXCVPISlq9xDK7bZ7FSNx_0",
+      authDomain: "inscricaopertalks.firebaseapp.com",
+      projectId: "inscricaopertalks",
+      storageBucket: "inscricaopertalks.firebasestorage.app",
+      messagingSenderId: "523613776287",
+      appId: "1:523613776287:web:0cedb8ac4b821e5c6275aa",
+      measurementId: "G-BM100R5MN1"
+    };
+   
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
@@ -190,7 +198,7 @@
         dataInscricao: new Date()
       });
 // Envia e-mail via servidor Flask
-await fetch("http://localhost:5000/enviar-email", {
+await fetch("https://pertalks.onrender.com/enviar-email", {
 method: "POST",
 headers: {
 "Content-Type": "application/json"
