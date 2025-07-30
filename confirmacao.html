@@ -303,6 +303,33 @@ if (senha) {
   document.getElementById("senhaAcesso").textContent = senha;
 }
 
+  window.addEventListener("DOMContentLoaded", async () => {
+    const params = new URLSearchParams(window.location.search);
+    const senha = params.get("senha");
+
+    // (Opcional) Buscar os dados da inscrição com essa senha no Firestore
+    // ou usar dados salvos localmente, se preferir.
+    const nome = localStorage.getItem("nome");
+    const email = localStorage.getItem("email");
+    const palestra = localStorage.getItem("palestra");
+
+    if (nome && email && palestra && senha) {
+      try {
+        await fetch("https://pertalks.onrender.com/enviar-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ nome, email, palestra, senha })
+        });
+      } catch (err) {
+        console.error("Erro ao enviar email:", err);
+      }
+    }
+  });
+
+
+
   </script>
 </body>
 </html>
