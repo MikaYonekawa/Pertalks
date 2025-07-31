@@ -155,13 +155,14 @@
     <div class="container">
       <div class="card">
         <div class="card-body">
-          <h2 class="card-title">Tour no Parque Tecnológico da Indústria</h2>
+          <h2 class="card-title">Coworking</h2>
           <p class="card-text">
-            Imersão guiada pelos principais ambientes de inovação do Parque Tecnológico da Indústria. Uma visita aos espaços onde ideias se transformam em soluções, conectando tecnologia, talentos e indústria. Conheça o ecossistema que impulsiona o futuro da inovação paranaense!
+           Reserve seu espaço no Coworking aqui.
+
 
           </p>
           <p class="card-text"><strong>Palestra - 2° dia: </strong> 07/08/2025</p>
-          <p class="card-text"><strong>Horário:</strong> 14h às 14h45</p>
+          <p class="card-text"><strong>Horário:</strong> Sem horário/p>
           <p class="card-text"><strong>Vagas disponíveis:</strong> <span id="vagasDisponiveis">15</span></p>
           <p class="card-text"><strong>Status:</strong> <span id="statusInscricao">Inscrições abertas</span></p>
 
@@ -194,8 +195,8 @@
     const db = getFirestore(app);
 
     // Lógica para atualizar número de vagas
-    const PALESTRA = "Tour no Parque Tecnológico da Indústria"; // Nome exato usado no campo "palestra" no Firestore
-    const LIMITE_VAGAS = 15;
+    const PALESTRA = "Palestra-5"; // Nome exato usado no campo "palestra" no Firestore
+    const LIMITE_VAGAS = 50;
 
     async function atualizarVagas() {
       const q = query(collection(db, "inscricoes"), where("palestra", "==", PALESTRA));

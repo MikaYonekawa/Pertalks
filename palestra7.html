@@ -155,14 +155,19 @@
     <div class="container">
       <div class="card">
         <div class="card-body">
-          <h2 class="card-title">Tour no Parque Tecnológico da Indústria</h2>
+          <h2 class="card-title">Jornada DISC</h2>
           <p class="card-text">
-            Imersão guiada pelos principais ambientes de inovação do Parque Tecnológico da Indústria. Uma visita aos espaços onde ideias se transformam em soluções, conectando tecnologia, talentos e indústria. Conheça o ecossistema que impulsiona o futuro da inovação paranaense!
+            Nesta vivência interativa, você terá acesso gratuito ao questionário DISC e participará de um workshop dinâmico conduzido pela Psicóloga e Especialista em Comportamento, Márcia Baldan.
+Descubra seu perfil comportamental, reconheça seus pontos fortes e compreenda como você tende a agir, se comunicar e enfrentar desafios — no trabalho e na vida.
+Uma oportunidade única de autoconhecimento com aplicação prática no seu dia a dia.
+
+::Os participantes precisarão chegar 10 minutos antes de iniciar a palestra!::
+Garanta o seu PRESENTE!! 😊
 
           </p>
           <p class="card-text"><strong>Palestra - 2° dia: </strong> 07/08/2025</p>
           <p class="card-text"><strong>Horário:</strong> 14h às 14h45</p>
-          <p class="card-text"><strong>Vagas disponíveis:</strong> <span id="vagasDisponiveis">15</span></p>
+          <p class="card-text"><strong>Vagas disponíveis:</strong> <span id="vagasDisponiveis">20</span></p>
           <p class="card-text"><strong>Status:</strong> <span id="statusInscricao">Inscrições abertas</span></p>
 
 
@@ -194,8 +199,8 @@
     const db = getFirestore(app);
 
     // Lógica para atualizar número de vagas
-    const PALESTRA = "Tour no Parque Tecnológico da Indústria"; // Nome exato usado no campo "palestra" no Firestore
-    const LIMITE_VAGAS = 15;
+    const PALESTRA = "Palestra-5"; // Nome exato usado no campo "palestra" no Firestore
+    const LIMITE_VAGAS = 50;
 
     async function atualizarVagas() {
       const q = query(collection(db, "inscricoes"), where("palestra", "==", PALESTRA));
