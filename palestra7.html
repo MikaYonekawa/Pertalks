@@ -173,7 +173,7 @@ Garanta o seu PRESENTE!! 😊
 
           <div class="botoes-inscricao">
             <a href="index.html" class="botao-voltar">Voltar para Home</a>
-            <a href="inscricao1.html" class="botao-inscricao">Realizar Inscrição</a>
+            <a href="inscricao7.html" class="botao-inscricao">Realizar Inscrição</a>
           </div>
         </div>
       </div>
@@ -199,11 +199,11 @@ Garanta o seu PRESENTE!! 😊
     const db = getFirestore(app);
 
     // Lógica para atualizar número de vagas
-    const PALESTRA = "Palestra-5"; // Nome exato usado no campo "palestra" no Firestore
-    const LIMITE_VAGAS = 50;
+    const PALESTRA = "DISC"; // Nome exato usado no campo "palestra" no Firestore
+    const LIMITE_VAGAS = 20;
 
     async function atualizarVagas() {
-      const q = query(collection(db, "inscricoes"), where("palestra", "==", PALESTRA));
+      const q = query(collection(db, "inscricoes"), where("senha", "==", PALESTRA));
       const snapshot = await getDocs(q);
       const inscritos = snapshot.size;
       const vagasRestantes = LIMITE_VAGAS - inscritos;

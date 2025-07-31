@@ -197,11 +197,11 @@
     const db = getFirestore(app);
 
     // Lógica para atualizar número de vagas
-    const PALESTRA = "Palestra-1"; // Nome exato usado no campo "palestra" no Firestore
+    const SENHA = "CLUB"; // Nome exato usado no campo "palestra" no Firestore
     const LIMITE_VAGAS = 50;
 
     async function atualizarVagas() {
-      const q = query(collection(db, "inscricoes"), where("palestra", "==", PALESTRA));
+      const q = query(collection(db, "inscricoes"), where("senha", "==", SENHA));
       const snapshot = await getDocs(q);
       const inscritos = snapshot.size;
       const vagasRestantes = LIMITE_VAGAS - inscritos;

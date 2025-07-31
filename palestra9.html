@@ -162,14 +162,14 @@
 
           </p>
           <p class="card-text"><strong>Palestra - 2° dia: </strong> 07/08/2025</p>
-          <p class="card-text"><strong>Horário:</strong> Sem horário/p>
+          <p class="card-text"><strong>Horário:</strong> Sem horário</p>
           <p class="card-text"><strong>Vagas disponíveis:</strong> <span id="vagasDisponiveis">15</span></p>
           <p class="card-text"><strong>Status:</strong> <span id="statusInscricao">Inscrições abertas</span></p>
 
 
           <div class="botoes-inscricao">
             <a href="index.html" class="botao-voltar">Voltar para Home</a>
-            <a href="inscricao1.html" class="botao-inscricao">Realizar Inscrição</a>
+            <a href="inscricao9.html" class="botao-inscricao">Realizar Inscrição</a>
           </div>
         </div>
       </div>
@@ -195,11 +195,11 @@
     const db = getFirestore(app);
 
     // Lógica para atualizar número de vagas
-    const PALESTRA = "Palestra-5"; // Nome exato usado no campo "palestra" no Firestore
+    const PALESTRA = ""; // Nome exato usado no campo "palestra" no Firestore
     const LIMITE_VAGAS = 50;
 
     async function atualizarVagas() {
-      const q = query(collection(db, "inscricoes"), where("palestra", "==", PALESTRA));
+      const q = query(collection(db, "inscricoes"), where("senha", "==", PALESTRA));
       const snapshot = await getDocs(q);
       const inscritos = snapshot.size;
       const vagasRestantes = LIMITE_VAGAS - inscritos;
